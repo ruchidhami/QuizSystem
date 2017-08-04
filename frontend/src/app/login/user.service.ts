@@ -25,10 +25,32 @@ export class UserService {
       .catch(this.handleError);
   }
 
+  getByUsername(username) {
+    return this.http.get('http://localhost:3000/user/getByUsername', username)
+      .map(response => {
+        console.log(response, "55555")
+        return response;
+      })
+  }
+
+  /*listUser() {
+    return this.http.get('http://localhost:3000/users')
+      .map((response) => {
+        let listedUsers: User[] = [];
+        response.json().forEach((userObj) => {
+          let user = new User();
+          user.username = userObj.username;
+
+          listedUsers.push(user)
+        });
+        return listedUsers;
+      })
+  }*/
+
   login(userData){
     return this.http.post('http://localhost:3000/user/signin', userData)
       .map(response => {
-        console.log(response)
+        return response;
       })
       .catch(this.handleError);
   }

@@ -5,12 +5,15 @@ import { HttpModule } from '@angular/http';
 import { routing } from './app.routing';
 
 import { AppComponent } from './app.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
+import { DashboardComponent } from './admin-dashboard/dashboard.component';
+import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 import { LoginComponent } from './login/login.component';
-import { QuestionComponent } from './dashboard/question/question.component';
-import { HeaderPageComponent } from './dashboard/header-page/header-page.component';
-import { HomePageComponent } from './dashboard/home-page/home-page.component';
-import { CategoriesComponent } from './dashboard/categories/categories.component';
+import { QuestionComponent } from './admin-dashboard/question/question.component';
+import { HeaderPageComponent } from './admin-dashboard/header-page/header-page.component';
+import { HomePageComponent } from './admin-dashboard/home-page/home-page.component';
+import { CategoriesComponent } from './admin-dashboard/categories/categories.component';
+import { NewQuizComponent } from './user-dashboard/new-quiz/new-quiz.component';
+import { UserHomeComponent } from './user-dashboard/user-home/user-home.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +23,10 @@ import { CategoriesComponent } from './dashboard/categories/categories.component
     QuestionComponent,
     HeaderPageComponent,
     HomePageComponent,
-    CategoriesComponent
+    CategoriesComponent,
+    NewQuizComponent,
+    UserDashboardComponent,
+    UserHomeComponent
   ],
   imports: [
     BrowserModule,

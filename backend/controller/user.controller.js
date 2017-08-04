@@ -22,6 +22,16 @@ function userList(req, res, next) {
     })
 }
 
+function getByUserName(req, res, next) {
+  userService.getUserByUsername(req.body)
+    .then(gotUsername => {
+      res.send(gotUsername);
+    })
+    .catch(err => {
+      next(err)
+    })
+}
+
 function userDelete(req, res, next) {
   userService.deleteUser(req.params.id)
     .then(deletedUser => {
@@ -35,5 +45,6 @@ function userDelete(req, res, next) {
 module.exports ={
   userCreate,
   userList,
-  userDelete
+  userDelete,
+  getByUserName
 }

@@ -11,11 +11,11 @@ import { UserService } from './user.service';
 })
 export class LoginComponent implements OnInit {
   user = new User();
+  userList : User;
   constructor( private router: Router,
               private userService: UserService) { }
 
   ngOnInit() {
-
   }
   createUser() {
     this.userService.createUser(this.user)
@@ -24,10 +24,39 @@ export class LoginComponent implements OnInit {
       });
   }
 
+  /*listUser() {
+    this.userService.listUser()
+      .subscribe((listedUsers) => {
+        listedUsers.forEach((listObj) => {
+          let user = new User();
+          user.username = listObj.username;
+
+          return user;
+        });
+      })
+  }*/
+
+  getByUsername() {
+    this.userService.getByUsername(this.user)
+      .subscribe((response) => {
+        console.log(response, "999")
+      })
+  }
+
   login() {
     this.userService.login(this.user)
-      .subscribe(() => {
-        this.router.navigate([`/app/home`]);
+      .subscribe((response) => {
+        console.log(response,"2020")
+
+        if(response.username === "admin" && response.email === "admin@admin.com" && response.role === "superAdmin"){
+          this.router.navigate([`/app/home`]);
+        }
+        // else if(response.username === this.getByUsername()) {
+        //   this.router.navigate([`/user/home`]);
+        // }
+        else{
+          this.router.navigate([`/login`]);
+        }
       })
   }
 

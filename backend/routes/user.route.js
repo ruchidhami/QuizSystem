@@ -10,5 +10,6 @@ router.post('/user/signup', userController.userCreate);
 router.get('/users', userController.userList);
 router.delete('/user/:userId', userController.userDelete);
 router.post('/user/signin', authorizationController.login);
+router.get('/user/getByUsername', userController.getByUserName);
 
 module.exports = router;
