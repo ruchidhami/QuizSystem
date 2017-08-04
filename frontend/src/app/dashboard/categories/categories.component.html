@@ -1,0 +1,13 @@
+<form class="form-horizontal style-form mtbox" #createForm="ngForm" (ngSubmit)="createCategory()">
+  <h3 style= "margin: 0 0 17px 140px" >Add Category</h3>
+  <div class="form-group">
+    <label class="col-sm-1 col-sm-2 control-label">Categories</label>
+    <div class="col-sm-5">
+      <input type="text" class="form-control" name="categoryName" [(ngModel)]="category.categoryName" #categoryName="ngModel">
+    </div>
+  </div>
+  <div class="btn-center">
+    <button type="submit" class="btn btn-theme" (click)="refresh()">Submit</button>
+  </div>
+</form>
+
