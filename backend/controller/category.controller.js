@@ -17,7 +17,7 @@ function categoryList(req, res, next) {
   categoryService.listCategory()
     .then(listedCategory => {
       res.send(listedCategory)
-    })
+})
     .catch(err => {
       next(err)
     })

@@ -9,6 +9,7 @@ import { CategoriesComponent }      from './admin-dashboard/categories/categorie
 import { HomePageComponent }      from './admin-dashboard/home-page/home-page.component';
 import { NewQuizComponent }      from './user-dashboard/new-quiz/new-quiz.component';
 import { UserHomeComponent }      from './user-dashboard/user-home/user-home.component';
+import { UCategoriesComponent }      from './user-dashboard/u-categories/u-categories.component';
 
 const appRoutes: Routes = [
   {
@@ -47,9 +48,13 @@ const appRoutes: Routes = [
         component: UserHomeComponent
       },
       {
-        path: 'newQuiz',
+        path: 'newquiz',
         component: NewQuizComponent
       },
+      {
+        path: 'categories',
+        component: UCategoriesComponent
+      }
     ]
   }
 ];

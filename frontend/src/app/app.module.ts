@@ -14,6 +14,8 @@ import { HomePageComponent } from './admin-dashboard/home-page/home-page.compone
 import { CategoriesComponent } from './admin-dashboard/categories/categories.component';
 import { NewQuizComponent } from './user-dashboard/new-quiz/new-quiz.component';
 import { UserHomeComponent } from './user-dashboard/user-home/user-home.component';
+import { UserHeaderComponent } from './user-dashboard/user-header/user-header.component';
+import { UCategoriesComponent } from './user-dashboard/u-categories/u-categories.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { UserHomeComponent } from './user-dashboard/user-home/user-home.componen
     CategoriesComponent,
     NewQuizComponent,
     UserDashboardComponent,
-    UserHomeComponent
+    UserHomeComponent,
+    UserHeaderComponent,
+    UCategoriesComponent
   ],
   imports: [
     BrowserModule,

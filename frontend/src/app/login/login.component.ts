@@ -46,17 +46,17 @@ export class LoginComponent implements OnInit {
   login() {
     this.userService.login(this.user)
       .subscribe((response) => {
-        console.log(response,"2020")
+        //console.log(JSON.parse(response.body),"2020")
 
-        if(response.username === "admin" && response.email === "admin@admin.com" && response.role === "superAdmin"){
-          this.router.navigate([`/app/home`]);
-        }
+        // if(response.username === "admin" && response.email === "admin@admin.com" && response.role === "superAdmin"){
+        //   this.router.navigate([`/app/home`]);
+        // }
         // else if(response.username === this.getByUsername()) {
         //   this.router.navigate([`/user/home`]);
         // }
-        else{
-          this.router.navigate([`/login`]);
-        }
+        // else{
+        //   this.router.navigate([`/login`]);
+        // }
       })
   }
 

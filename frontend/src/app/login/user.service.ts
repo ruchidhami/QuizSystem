@@ -28,7 +28,7 @@ export class UserService {
   getByUsername(username) {
     return this.http.get('http://localhost:3000/user/getByUsername', username)
       .map(response => {
-        console.log(response, "55555")
+        //console.log(response, "55555")
         return response;
       })
   }
@@ -51,6 +51,7 @@ export class UserService {
     return this.http.post('http://localhost:3000/user/signin', userData)
       .map(response => {
         return response;
+        //return userObj;
       })
       .catch(this.handleError);
   }
