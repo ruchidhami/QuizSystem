@@ -3,6 +3,7 @@
 const questionService = require('../services/question.service');
 
 function questionCreate(req, res, next) {
+  console.log(req.body,"5555")
   questionService.createQuestion(req.body)
     .then(questionCreated => {
       res.send(questionCreated)
@@ -22,6 +23,16 @@ function questionList(req, res, next) {
     })
 }
 
+function questionRetrieve(req, res, next) {
+  questionService.fetchQuestion(req.params.categoryId)
+    .then(questionRetrieved => {
+      res.send(questionRetrieved)
+    })
+    .catch(err => {
+      next(err)
+    })
+}
+
 function questionDelete(req, res, next) {
   questionService.deleteQuestion(req.params.id)
     .then(deletedQuestion => {
@@ -35,5 +46,6 @@ function questionDelete(req, res, next) {
 module.exports = {
   questionCreate,
   questionList,
+  questionRetrieve,
   questionDelete
 }

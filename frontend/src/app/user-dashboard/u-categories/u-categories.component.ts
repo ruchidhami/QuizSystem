@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { Category } from '../../admin-dashboard/categories/category';
 import { DashboardService } from '../../admin-dashboard/dashboard.service';
@@ -10,11 +11,11 @@ import { DashboardService } from '../../admin-dashboard/dashboard.service';
   providers: [DashboardService]
 })
 export class UCategoriesComponent implements OnInit {
-  categories: Category;
-  constructor(private dashboardService: DashboardService) { }
+  categories: Category[];
+  constructor(private dashboardService: DashboardService, private router: Router) { }
 
   ngOnInit() {
-    this.listCategories()
+    this.listCategories();
   }
 
   listCategories(){
@@ -22,6 +23,10 @@ export class UCategoriesComponent implements OnInit {
       .subscribe((categories) => {
         this.categories = categories;
       })
+  }
+
+  goToCategory(id):void{
+    this.router.navigate([`/user/newquiz/`, id]);
   }
 
 }

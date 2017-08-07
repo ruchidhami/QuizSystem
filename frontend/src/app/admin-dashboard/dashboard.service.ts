@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Http, Response, Headers } from '@angular/http';
 import { Observable } from 'rxjs';
 
@@ -7,7 +8,7 @@ import { Category } from './categories/category';
 
 @Injectable()
 export class DashboardService {
-  constructor(private http: Http) {
+  constructor(private http: Http, private activatedRoute: ActivatedRoute) {
   }
   private headers = new Headers({ 'Content-Type': 'application/json', 'Accept': 'application/json' });
 
@@ -23,13 +24,13 @@ export class DashboardService {
       .catch(this.handleError);
   }
 
-  listCategory(): Observable<Category> {
+  listCategory(): Observable<Category[]> {
     return this.http.get('http://localhost:3000/categories')
       .map(response => {
         let categories: Category[] = [];
         response.json().forEach((categoryObj) => {
           let category = new Category();
-          category.id = categoryObj.id;
+          category.id = categoryObj._id;
           category.categoryName = categoryObj.categoryName;
 
           categories.push(category)
@@ -48,8 +49,28 @@ export class DashboardService {
         questions.question = quesObj.question;
         questions.incorrectAnswer = quesObj.incorrectAnswer;
         questions.correctAnswer = quesObj.correctAnswer;
+        questions.categoryId = quesObj.categoryId;
 
         return questions;
+      })
+      .catch(this.handleError);
+  }
+
+  retrieveQuestion(categoryId) {
+    return this.http.get('http://localhost:3000/question/' + categoryId)
+      .map(response => {
+        let question: Question[] = [];
+        response.json().forEach((questionObj) => {
+          let quest = new Question();
+          quest.question = questionObj.question;
+          quest.incorrectAnswer = questionObj.incorrectAnswer;
+          quest.correctAnswer = questionObj.correctAnswer;
+          quest.categoryId = questionObj.categoryId;
+
+          question.push(quest)
+        });
+
+        return question;
       })
       .catch(this.handleError);
   }

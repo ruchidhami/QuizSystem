@@ -46,6 +46,7 @@ export class LoginComponent implements OnInit {
   login() {
     this.userService.login(this.user)
       .subscribe((response) => {
+      console.log(response.json(), "55")
         //console.log(JSON.parse(response.body),"2020")
 
         // if(response.username === "admin" && response.email === "admin@admin.com" && response.role === "superAdmin"){

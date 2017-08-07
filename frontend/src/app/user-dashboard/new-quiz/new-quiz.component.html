@@ -1,4 +1,7 @@
 <form class="form-horizontal style-form mtbox" #createForm="ngForm" (ngSubmit)="createCategory()">
   <h3 style= "margin: 0 0 17px 140px" >Add Category</h3>
+  <ul>
+    <li *ngFor="let ques of quest">{{ques.question}}</li>
+  </ul>
 </form>
 

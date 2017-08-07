@@ -27,6 +27,20 @@ function listQuestion() {
   })
 }
 
+function fetchQuestion(categoryId) {
+  return new Promise((resolve, reject) => {
+    questionModel.find({
+      categoryId: categoryId
+    })
+      .then(fetchedQuestion => {
+        resolve(fetchedQuestion)
+    })
+      .catch(err => {
+        reject(err)
+      })
+  })
+}
+
 function deleteQuestion(id) {
   return new Promise((resolve, reject) => {
     questionModel.findOneAndRemove(id)
@@ -42,5 +56,6 @@ function deleteQuestion(id) {
 module.exports ={
   createQuestion,
   listQuestion,
+  fetchQuestion,
   deleteQuestion
 };

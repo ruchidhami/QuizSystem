@@ -11,7 +11,7 @@ import { Question } from './quest';
   providers: [DashboardService]
 })
 export class QuestionComponent implements OnInit {
-  categories: Category;
+  categories: Category[];
   quest = new Question();
 
   constructor(private dashboardService: DashboardService) {

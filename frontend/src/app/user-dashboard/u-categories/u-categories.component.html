@@ -1,6 +1,6 @@
 <h2>Categories</h2>
 <ul class="list-categories">
   <li *ngFor="let category of categories">
-    <a href="#">{{category.categoryName}}</a>
+    <button (click)="goToCategory(category.id)">{{category.categoryName}}</button>
   </li>
 </ul>

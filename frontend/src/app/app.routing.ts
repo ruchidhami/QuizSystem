@@ -48,15 +48,15 @@ const appRoutes: Routes = [
         component: UserHomeComponent
       },
       {
-        path: 'newquiz',
-        component: NewQuizComponent
-      },
-      {
         path: 'categories',
         component: UCategoriesComponent
-      }
+      },
+      {
+        path: 'newquiz/:id',
+        component: NewQuizComponent
+      },
     ]
   }
 ];
 
-export const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes);
+export const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes, { enableTracing: true });
