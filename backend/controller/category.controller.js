@@ -23,6 +23,16 @@ function categoryList(req, res, next) {
     })
 }
 
+function categoryRetrieve(req, res, next) {
+  categoryService.retrieveCategory(req.params.id)
+    .then(retrievedCategory => {
+      res.send(retrievedCategory)
+    })
+    .catch(err => {
+      next(err)
+    })
+}
+
 function categoryDelete(req, res, next) {
   categoryService.deleteCategory(req.params.id)
     .then(deletedCategory => {
@@ -36,5 +46,6 @@ function categoryDelete(req, res, next) {
 module.exports ={
   categoryCreate,
   categoryList,
-  categoryDelete
+  categoryDelete,
+  categoryRetrieve
 }

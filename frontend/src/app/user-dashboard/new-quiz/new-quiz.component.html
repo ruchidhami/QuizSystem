@@ -1,7 +1,15 @@
 <form class="form-horizontal style-form mtbox" #createForm="ngForm" (ngSubmit)="createCategory()">
-  <h3 style= "margin: 0 0 17px 140px" >Add Category</h3>
+  <h3 style= "margin: 0 0 17px 140px">{{category.categoryName}}</h3>
   <ul>
-    <li *ngFor="let ques of quest">{{ques.question}}</li>
+    <li *ngFor="let question of questions; let i = index;" class="strong">
+      {{question.question}}
+      <ul>
+        <li *ngFor="let ans of question.answers; let i = index;" >
+          <a (click)="validateAnswer($event.target, ans, question.correctAnswer)">{{i+1}} {{ans}}</a>
+          <p>{{question.description}}</p>
+        </li>
+      </ul>
+    </li>
   </ul>
 </form>
 

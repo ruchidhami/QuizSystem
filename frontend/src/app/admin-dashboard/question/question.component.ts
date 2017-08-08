@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { DashboardService } from '../dashboard.service';
 import { Category } from '../categories/category';
-import { Question } from './quest';
+import { Question } from './question';
 
 @Component({
   selector: 'app-add-question-page',
@@ -12,7 +12,7 @@ import { Question } from './quest';
 })
 export class QuestionComponent implements OnInit {
   categories: Category[];
-  quest = new Question();
+  question = new Question({});
 
   constructor(private dashboardService: DashboardService) {
   }
@@ -29,9 +29,10 @@ export class QuestionComponent implements OnInit {
   }
 
   createQuestion() {
-    this.dashboardService.createQuestion(this.quest)
-      .subscribe((questions) => {
-        this.quest = questions;
+    this.dashboardService.createQuestion(this.question)
+      .subscribe((question) => {
+        debugger
+        this.question = question;
       })
   }
 

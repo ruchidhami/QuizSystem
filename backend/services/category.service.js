@@ -27,6 +27,18 @@ function listCategory() {
   })
 }
 
+function retrieveCategory(id) {
+  return new Promise((resolve, reject) => {
+    categoryModel.findOne({'_id': id})
+      .then(categoryRetrieved => {
+        resolve(categoryRetrieved)
+      })
+      .catch(err => {
+        reject(err)
+      })
+  })
+}
+
 function deleteCategory(id) {
   return new Promise((resolve, reject) => {
     categoryModel.findOneAndRemove(id)
@@ -42,5 +54,6 @@ function deleteCategory(id) {
 module.exports = {
   createCategory,
   listCategory,
-  deleteCategory
+  deleteCategory,
+  retrieveCategory
 };

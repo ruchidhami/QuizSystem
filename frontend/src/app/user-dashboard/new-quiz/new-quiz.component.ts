@@ -1,35 +1,57 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute , Router} from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import 'rxjs/add/operator/switchMap';
 
 import { DashboardService } from '../../admin-dashboard/dashboard.service';
 
-import {Question} from '../../admin-dashboard/question/quest'
+import { Category } from '../../admin-dashboard/categories/category'
+import { Question } from '../../admin-dashboard/question/question'
 
 @Component({
   selector: 'app-new-quiz',
   templateUrl: './new-quiz.component.html',
   styleUrls: ['./new-quiz.component.css'],
-  providers:[DashboardService]
+  providers: [DashboardService]
 })
 export class NewQuizComponent implements OnInit {
-  quest: Question[];
-  constructor(
-    private activatedRoute: ActivatedRoute,
-    private dashboardService: DashboardService
-  ) { }
+  questions: Question[];
+  category = new Category();
 
-  ngOnInit() {
-    this.retrieveQuestion(null)
+  constructor(private activatedRoute: ActivatedRoute,
+              private dashboardService: DashboardService) {
   }
 
-  retrieveQuestion(categoryId) {
-   categoryId = this.activatedRoute.snapshot.paramMap.get('id');
+  public categoryId = this.activatedRoute.snapshot.paramMap.get('id');
 
-    this.dashboardService.retrieveQuestion(categoryId)
+  ngOnInit() {
+    this.retrieveCategory();
+    this.retrieveQuestion()
+  }
+
+  retrieveQuestion() {
+    this.dashboardService.retrieveQuestion(this.categoryId)
       .subscribe((question) => {
-        this.quest = question;
+        this.questions = question;
       })
+  }
+
+  retrieveCategory() {
+    this.dashboardService.retrieveCategory(this.categoryId)
+      .subscribe((category) => {
+        this.category = category;
+      })
+  }
+
+  correctAnswerChoosen: boolean = false;
+
+  validateAnswer(choosedOption, answer, correctAnswer) {
+    if (!this.correctAnswerChoosen)
+      if (answer === correctAnswer) {
+        this.correctAnswerChoosen = true;
+        choosedOption.style.color = 'green';
+      } else {
+        choosedOption.style.color = 'red';
+      }
   }
 
 }

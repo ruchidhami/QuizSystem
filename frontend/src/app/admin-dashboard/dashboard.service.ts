@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Http, Response, Headers } from '@angular/http';
 import { Observable } from 'rxjs';
 
-import { Question } from './question/quest';
+import { Question } from './question/question';
 import { Category } from './categories/category';
 
 @Injectable()
@@ -41,17 +41,26 @@ export class DashboardService {
       .catch(this.handleError);
   }
 
+  retrieveCategory(categoryId): Observable<Category> {
+    return this.http.get('http://localhost:3000/category/' + categoryId)
+      .map(response => {
+          const categoryObj = response.json();
+          let category = new Category();
+          category.categoryName = categoryObj.categoryName;
+          category.id = categoryObj._id;
+
+          return category;
+        })
+      .catch(this.handleError);
+  }
+
   createQuestion(quesObj): Observable<Question> {
     return this.http.post('http://localhost:3000/question', quesObj)
       .map(response => {
         const quesObj = response.json();
-        let questions = new Question();
-        questions.question = quesObj.question;
-        questions.incorrectAnswer = quesObj.incorrectAnswer;
-        questions.correctAnswer = quesObj.correctAnswer;
-        questions.categoryId = quesObj.categoryId;
+        let question = new Question(quesObj);
 
-        return questions;
+        return question;
       })
       .catch(this.handleError);
   }
@@ -61,15 +70,8 @@ export class DashboardService {
       .map(response => {
         let question: Question[] = [];
         response.json().forEach((questionObj) => {
-          let quest = new Question();
-          quest.question = questionObj.question;
-          quest.incorrectAnswer = questionObj.incorrectAnswer;
-          quest.correctAnswer = questionObj.correctAnswer;
-          quest.categoryId = questionObj.categoryId;
-
-          question.push(quest)
+          question.push(new Question(questionObj));
         });
-
         return question;
       })
       .catch(this.handleError);
