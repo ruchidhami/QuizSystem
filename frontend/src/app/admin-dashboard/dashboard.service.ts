@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 
 import { Question } from './question/question';
 import { Category } from './categories/category';
+import { User } from '../login/user';
 
 @Injectable()
 export class DashboardService {
@@ -65,6 +66,18 @@ export class DashboardService {
       .catch(this.handleError);
   }
 
+  listQuestion() {
+    return this.http.get('http://localhost:3000/questions')
+      .map(response => {
+        let questions: Question[] = [];
+        response.json().forEach((questionObj) => {
+          questions.push(new Question(questionObj));
+        });
+        return questions;
+      })
+      .catch(this.handleError);
+  }
+
   retrieveQuestion(categoryId) {
     return this.http.get('http://localhost:3000/question/' + categoryId)
       .map(response => {
@@ -73,6 +86,21 @@ export class DashboardService {
           question.push(new Question(questionObj));
         });
         return question;
+      })
+      .catch(this.handleError);
+  }
+
+  listUsers(): Observable<User[]> {
+    return this.http.get('http://localhost:3000/users')
+      .map(response => {
+        let users: User[] = [];
+        response.json().forEach((userObj) => {
+          let user = new User(userObj);
+
+          users.push(user)
+        });
+
+        return users;
       })
       .catch(this.handleError);
   }

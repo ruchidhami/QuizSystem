@@ -35,6 +35,7 @@ function comparePassword(candidatePassword, hash, callback){
 function getUserByUsername(username){
   return new Promise((resolve, reject) => {
     var query = {username: username};
+    console.log(query, 'wsddsadassdfasd')
     userModel.findOne(query)
       .then(user => {
         resolve(user)

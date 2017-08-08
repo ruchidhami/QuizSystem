@@ -8,50 +8,42 @@ import { User } from './user';
 export class UserService {
   constructor(private http: Http) {
   }
+
   private headers = new Headers({ 'Content-Type': 'application/json', 'Accept': 'application/json' });
 
   createUser(userObj): Observable<User> {
     return this.http.post('http://localhost:3000/user/signup', userObj)
       .map(response => {
-        const userObj = response.json();
-        let user = new User();
-        user.id = userObj.id;
-        user.username = userObj.username;
-        user.password = userObj.password;
-        user.email = userObj.email;
-
-        return user;
+        return new User(response.json());
       })
       .catch(this.handleError);
   }
 
-  getByUsername(username) {
-    return this.http.get('http://localhost:3000/user/getByUsername', username)
+  getByUsername(username): Observable<User> {
+    return this.http.post('http://localhost:3000/user/getByUsername', username)
       .map(response => {
-        //console.log(response, "55555")
-        return response;
+        return new User(response.json());
       })
   }
 
   /*listUser() {
-    return this.http.get('http://localhost:3000/users')
-      .map((response) => {
-        let listedUsers: User[] = [];
-        response.json().forEach((userObj) => {
-          let user = new User();
-          user.username = userObj.username;
+   return this.http.get('http://localhost:3000/users')
+   .map((response) => {
+   let listedUsers: User[] = [];
+   response.json().forEach((userObj) => {
+   let user = new User();
+   user.username = userObj.username;
 
-          listedUsers.push(user)
-        });
-        return listedUsers;
-      })
-  }*/
+   listedUsers.push(user)
+   });
+   return listedUsers;
+   })
+   }*/
 
-  login(userData){
+  login(userData): Observable<User> {
     return this.http.post('http://localhost:3000/user/signin', userData)
       .map(response => {
-        return response;
-        //return userObj;
+        return new User(response.json());
       })
       .catch(this.handleError);
   }

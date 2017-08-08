@@ -42,12 +42,10 @@ export class NewQuizComponent implements OnInit {
       })
   }
 
-  correctAnswerChoosen: boolean = false;
-
-  validateAnswer(choosedOption, answer, correctAnswer) {
-    if (!this.correctAnswerChoosen)
-      if (answer === correctAnswer) {
-        this.correctAnswerChoosen = true;
+  validateAnswer(choosedOption, ans, question) {
+    if (!question.correctAnswerChoosen)
+      if (ans === question.correctAnswer) {
+        question.correctAnswerChoosen = true;
         choosedOption.style.color = 'green';
       } else {
         choosedOption.style.color = 'red';

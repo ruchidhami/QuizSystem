@@ -11,26 +11,26 @@
   <div class="form-group">
     <label class="col-sm-1 col-sm-2 control-label">Question</label>
     <div class="col-sm-5">
-      <input type="text" class="form-control" name="question" [(ngModel)]="question.question" #question="ngModel">
+      <input type="text" class="form-control" name="question" [(ngModel)]="quest.question" #question="ngModel">
     </div>
   </div>
   <span class="note">*Please Seperate the options by pipe '|' ('shift' + '\') for eg: option1 | option2 | option3 </span>
   <div class="form-group">
     <label class="col-sm-1 col-sm-2 control-label">In-Correct Options</label>
     <div class="col-sm-5">
-      <input type="text" class="form-control" name="incorrectAnswer" [(ngModel)]="question.incorrectAnswer" #incorrectAnswer="ngModel">
+      <input type="text" class="form-control" name="incorrectAnswer" [(ngModel)]="quest.incorrectAnswer" #incorrectAnswer="ngModel">
     </div>
   </div>
   <div class="form-group">
     <label class="col-sm-1 col-sm-2 control-label">Correct Option</label>
     <div class="col-sm-5">
-      <input type="text" class="form-control" name="correctAnswer" [(ngModel)]="question.correctAnswer" #correctAnswer="ngModel">
+      <input type="text" class="form-control" name="correctAnswer" [(ngModel)]="quest.correctAnswer" #correctAnswer="ngModel">
     </div>
   </div>
   <div class="form-group">
     <label class="col-sm-1 col-sm-2 control-label">Correct Answer Description</label>
     <div class="col-sm-5">
-      <input type="text" class="form-control" name="description" [(ngModel)]="question.description" #description="ngModel">
+      <input type="text" class="form-control" name="description" [(ngModel)]="quest.description" #description="ngModel">
     </div>
   </div>
   <div class="btn-center">

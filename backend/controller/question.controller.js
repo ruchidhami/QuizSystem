@@ -3,7 +3,6 @@
 const questionService = require('../services/question.service');
 
 function questionCreate(req, res, next) {
-  console.log(req.body,"5555")
   questionService.createQuestion(req.body)
     .then(questionCreated => {
       res.send(questionCreated)

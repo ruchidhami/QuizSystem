@@ -5,7 +5,10 @@ export class Question {
   correctAnswer: string;
   description: string;
   categoryId: string;
+
+  // Derived properties
   answers: Array<string>;
+  correctAnswerChoosen: boolean = false;
 
   constructor(props: any) {
     this.id = props.id;

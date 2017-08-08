@@ -10,13 +10,17 @@ import { UserService } from './user.service';
   providers: [UserService]
 })
 export class LoginComponent implements OnInit {
-  user = new User();
-  userList : User;
-  constructor( private router: Router,
-              private userService: UserService) { }
+  user = new User({});
+  userList: User;
+
+  constructor(private router: Router,
+              private userService: UserService) {
+  }
 
   ngOnInit() {
+
   }
+
   createUser() {
     this.userService.createUser(this.user)
       .subscribe((user) => {
@@ -25,39 +29,36 @@ export class LoginComponent implements OnInit {
   }
 
   /*listUser() {
-    this.userService.listUser()
-      .subscribe((listedUsers) => {
-        listedUsers.forEach((listObj) => {
-          let user = new User();
-          user.username = listObj.username;
+   this.userService.listUser()
+   .subscribe((listedUsers) => {
+   listedUsers.forEach((listObj) => {
+   let user = new User();
+   user.username = listObj.username;
 
-          return user;
-        });
-      })
-  }*/
+   return user;
+   });
+   })
+   }*/
 
   getByUsername() {
     this.userService.getByUsername(this.user)
       .subscribe((response) => {
-        console.log(response, "999")
+        // return response;
       })
   }
 
   login() {
     this.userService.login(this.user)
-      .subscribe((response) => {
-      console.log(response.json(), "55")
-        //console.log(JSON.parse(response.body),"2020")
-
-        // if(response.username === "admin" && response.email === "admin@admin.com" && response.role === "superAdmin"){
-        //   this.router.navigate([`/app/home`]);
-        // }
-        // else if(response.username === this.getByUsername()) {
-        //   this.router.navigate([`/user/home`]);
-        // }
-        // else{
-        //   this.router.navigate([`/login`]);
-        // }
+      .subscribe((loginUser) => {
+        if (loginUser.username === 'admin' && loginUser.email === 'admin@admin.com' && loginUser.role === 'superAdmin') {
+          this.router.navigate([`/app/home`]);
+        }
+        else if (!loginUser.username) {
+          this.router.navigate([`/signup`]);
+        }
+        else {
+          this.router.navigate([`/user/home`]);
+        }
       })
   }
 

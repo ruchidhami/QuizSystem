@@ -12,7 +12,7 @@ import { Question } from './question';
 })
 export class QuestionComponent implements OnInit {
   categories: Category[];
-  question = new Question({});
+  quest = new Question({});
 
   constructor(private dashboardService: DashboardService) {
   }
@@ -29,10 +29,9 @@ export class QuestionComponent implements OnInit {
   }
 
   createQuestion() {
-    this.dashboardService.createQuestion(this.question)
+    this.dashboardService.createQuestion(this.quest)
       .subscribe((question) => {
-        debugger
-        this.question = question;
+        this.quest = question;
       })
   }
 

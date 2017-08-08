@@ -5,7 +5,7 @@
       {{question.question}}
       <ul>
         <li *ngFor="let ans of question.answers; let i = index;" >
-          <a (click)="validateAnswer($event.target, ans, question.correctAnswer)">{{i+1}} {{ans}}</a>
+          <a (click)="validateAnswer($event.target, ans, question)">{{i+1}} {{ans}}</a>
           <p>{{question.description}}</p>
         </li>
       </ul>
