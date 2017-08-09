@@ -47,4 +47,4 @@ module.exports = {
   questionList,
   questionRetrieve,
   questionDelete
-}
+};

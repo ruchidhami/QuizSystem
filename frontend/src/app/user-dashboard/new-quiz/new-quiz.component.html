@@ -5,9 +5,15 @@
       {{question.question}}
       <ul>
         <li *ngFor="let ans of question.answers; let i = index;" >
-          <a (click)="validateAnswer($event.target, ans, question)">{{i+1}} {{ans}}</a>
-          <p>{{question.description}}</p>
+          <a *ngIf="ans === question.correctAnswer" (click)="validateAnswer($event.target, ans, question)" [style.color]="">{{i+1}} {{ans}}</a>
+          <a *ngIf="ans !== question.correctAnswer" (click)="validateAnswer($event.target, ans, question)">{{i+1}} {{ans}}</a>
         </li>
+        <div>
+          <button type="button" (click)="showAnswer(question)">Show Answer</button>
+          <div [hidden]="!question.displayAnswer">
+            <p>Answer: {{question.correctAnswer}} <br> Description: {{question.description}}</p>
+          </div>
+        </div>
       </ul>
     </li>
   </ul>

@@ -9,9 +9,10 @@ export class Question {
   // Derived properties
   answers: Array<string>;
   correctAnswerChoosen: boolean = false;
+  displayAnswer: boolean = false;
 
   constructor(props: any) {
-    this.id = props.id;
+    this.id = props._id;
     this.question = props.question;
     this.incorrectAnswer = props.incorrectAnswer;
     this.correctAnswer = props.correctAnswer;

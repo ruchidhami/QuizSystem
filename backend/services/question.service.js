@@ -29,9 +29,7 @@ function listQuestion() {
 
 function fetchQuestion(categoryId) {
   return new Promise((resolve, reject) => {
-    questionModel.find({
-      categoryId: categoryId
-    })
+    questionModel.find({categoryId: categoryId})
       .then(fetchedQuestion => {
         resolve(fetchedQuestion)
     })

@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
 import { DashboardService } from '../dashboard.service';
-import { Question } from '../question/question';
-import { User } from '../../login/user';
 
 @Component({
   selector: 'app-home-page',
@@ -13,11 +11,13 @@ import { User } from '../../login/user';
 export class HomePageComponent implements OnInit {
   questionsCount: number;
   usersCount: number;
+  categoriesCount: number;
   constructor(private dashboardService: DashboardService) { }
 
   ngOnInit() {
     this.listQuestions();
-    this.listUsers()
+    this.listUsers();
+    this.listCategories()
   }
 
   listQuestions() {
@@ -31,6 +31,13 @@ export class HomePageComponent implements OnInit {
     this.dashboardService.listUsers()
       .subscribe((users) => {
         this.usersCount = users.length;
+      })
+  }
+
+  listCategories(){
+    this.dashboardService.listCategory()
+      .subscribe((categories) => {
+        this.categoriesCount = categories.length;
       })
   }
 }

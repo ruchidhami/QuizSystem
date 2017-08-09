@@ -5,9 +5,9 @@ const router = express.Router();
 
 const questionController = require('../controller/question.controller');
 
-router.post('/question', questionController.questionCreate);
+router.post('/questions', questionController.questionCreate);
 router.get('/questions', questionController.questionList);
-router.get('/question/:categoryId', questionController.questionRetrieve);
-router.delete('/question/:id', questionController.questionDelete);
+router.get('/questions/:categoryId', questionController.questionRetrieve);
+router.delete('/questions/:id', questionController.questionDelete);
 
 module.exports = router;

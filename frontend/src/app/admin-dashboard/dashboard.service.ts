@@ -56,10 +56,11 @@ export class DashboardService {
   }
 
   createQuestion(quesObj): Observable<Question> {
-    return this.http.post('http://localhost:3000/question', quesObj)
+    return this.http.post('http://localhost:3000/questions', quesObj)
       .map(response => {
         const quesObj = response.json();
         let question = new Question(quesObj);
+        question.id = quesObj._id;
 
         return question;
       })
@@ -79,7 +80,7 @@ export class DashboardService {
   }
 
   retrieveQuestion(categoryId) {
-    return this.http.get('http://localhost:3000/question/' + categoryId)
+    return this.http.get('http://localhost:3000/questions/' + categoryId)
       .map(response => {
         let question: Question[] = [];
         response.json().forEach((questionObj) => {

@@ -52,4 +52,8 @@ export class NewQuizComponent implements OnInit {
       }
   }
 
+  showAnswer(question) {
+    question.displayAnswer = !question.displayAnswer;
+  }
+
 }

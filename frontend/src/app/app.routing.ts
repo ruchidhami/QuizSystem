@@ -34,7 +34,7 @@ const appRoutes: Routes = [
         component: HomePageComponent
       },
       {
-        path: 'question',
+        path: 'questions',
         component: QuestionComponent
       }
     ]
