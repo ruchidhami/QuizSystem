@@ -10,6 +10,8 @@ export class Question {
   answers: Array<string>;
   correctAnswerChoosen: boolean = false;
   displayAnswer: boolean = false;
+  answerShown : boolean = false;
+
 
   constructor(props: any) {
     this.id = props._id;

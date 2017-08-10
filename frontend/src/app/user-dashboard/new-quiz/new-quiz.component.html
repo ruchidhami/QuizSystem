@@ -3,14 +3,14 @@
   <ul>
     <li *ngFor="let question of questions; let i = index;" class="strong">
       {{question.question}}
-      <ul>
+      <ul [class.cursor] = "question.displayAnswer">
         <li *ngFor="let ans of question.answers; let i = index;" >
-          <a *ngIf="ans === question.correctAnswer" (click)="validateAnswer($event.target, ans, question)" [style.color]="">{{i+1}} {{ans}}</a>
-          <a *ngIf="ans !== question.correctAnswer" (click)="validateAnswer($event.target, ans, question)">{{i+1}} {{ans}}</a>
+          <a *ngIf="ans === question.correctAnswer" (click)="validateAnswer($event.target, ans, question)" href="javascript:void(0)" [style.color]="getCorrectAnswerColor(question)">{{i+1}} {{ans}}</a>
+          <a *ngIf="ans !== question.correctAnswer" (click)="validateAnswer($event.target, ans, question)" href="javascript:void(0)">{{i+1}} {{ans}}</a>
         </li>
-        <div>
-          <button type="button" (click)="showAnswer(question)">Show Answer</button>
-          <div [hidden]="!question.displayAnswer">
+        <div class="answer">
+          <button type="button" (click)="showAnswer(question)"><span class="hide">Hide Answer</span><span class="show">Show Answer</span></button>
+          <div [class.display]="!question.displayAnswer" class="step">
             <p>Answer: {{question.correctAnswer}} <br> Description: {{question.description}}</p>
           </div>
         </div>

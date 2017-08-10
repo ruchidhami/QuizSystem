@@ -2241,9 +2241,28 @@ label {
   padding: 0 0 10px 135px;
 }
 
+.display{
+  height: 0 !important;
+  overflow: hidden !important;
+}
+.step{
+  height: 60px;
+  overflow: visible;
+  transition: height 0.8s ease;
+}
 
-/*.list-categories td{*/
-  /*padding: 5px;*/
-  /*margin: 0 0 5px;*/
-  /*background: aliceblue;*/
-/*}*/
+.cursor a{
+  cursor: default !important;
+}
+
+.hide {
+  display: none;
+}
+
+.cursor .show {
+  display: none !important;
+}
+
+.cursor .hide {
+  display: block !important;
+}

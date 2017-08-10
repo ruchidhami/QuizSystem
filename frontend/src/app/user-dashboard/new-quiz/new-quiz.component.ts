@@ -43,7 +43,7 @@ export class NewQuizComponent implements OnInit {
   }
 
   validateAnswer(choosedOption, ans, question) {
-    if (!question.correctAnswerChoosen)
+    if (!question.correctAnswerChoosen && !question.answerShown)
       if (ans === question.correctAnswer) {
         question.correctAnswerChoosen = true;
         choosedOption.style.color = 'green';
@@ -53,7 +53,15 @@ export class NewQuizComponent implements OnInit {
   }
 
   showAnswer(question) {
+    question.answerShown = true;
     question.displayAnswer = !question.displayAnswer;
   }
 
+  getCorrectAnswerColor(question) {
+    if(question.answerShown) {
+      return "green";
+    } else {
+      return "";
+    }
+  }
 }
