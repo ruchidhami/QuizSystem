@@ -11,6 +11,8 @@ import { NewQuizComponent }      from './user-dashboard/new-quiz/new-quiz.compon
 import { UserHomeComponent }      from './user-dashboard/user-home/user-home.component';
 import { UCategoriesComponent }      from './user-dashboard/u-categories/u-categories.component';
 
+import { SecurityService }      from './security/security.service';
+
 const appRoutes: Routes = [
   {
     path: '',
@@ -24,6 +26,7 @@ const appRoutes: Routes = [
   {
     path: 'admin',
     component: DashboardComponent,
+    canActivate: [SecurityService],
     children: [
       {
         path: 'categories',
@@ -42,6 +45,7 @@ const appRoutes: Routes = [
   {
     path: 'user',
     component: UserDashboardComponent,
+    canActivate: [SecurityService],
     children: [
       {
         path: 'home',

@@ -1,24 +1,25 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie';
 
 import { User } from './user';
 import { UserService } from './user.service';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
-  providers: [UserService]
+  providers: [UserService, CookieService]
 })
 export class LoginComponent implements OnInit {
   user = new User({});
-  userList: User;
 
   constructor(private router: Router,
+              private cookieService: CookieService,
               private userService: UserService) {
   }
 
   ngOnInit() {
-
   }
 
   createUser() {
@@ -28,35 +29,18 @@ export class LoginComponent implements OnInit {
       });
   }
 
-  /*listUser() {
-   this.userService.listUser()
-   .subscribe((listedUsers) => {
-   listedUsers.forEach((listObj) => {
-   let user = new User();
-   user.username = listObj.username;
-
-   return user;
-   });
-   })
-   }*/
-
-  getByUsername() {
-    this.userService.getByUsername(this.user)
-      .subscribe((response) => {
-        // return response;
-      })
-  }
-
   login() {
     this.userService.login(this.user)
       .subscribe((loginUser) => {
         if (loginUser.username === 'admin' && loginUser.email === 'admin@admin.com' && loginUser.role === 'superAdmin') {
+          this.cookieService.put("authToken", loginUser.role);
           this.router.navigate([`/admin/home`]);
         }
         else if (!loginUser.username) {
           this.router.navigate([`/signup`]);
         }
         else {
+          this.cookieService.put("authToken", "user");
           this.router.navigate([`/user/home`]);
         }
       })

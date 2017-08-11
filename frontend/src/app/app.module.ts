@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { routing } from './app.routing';
+import { CookieModule } from 'ngx-cookie';
 
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './admin-dashboard/dashboard.component';
@@ -16,6 +17,8 @@ import { NewQuizComponent } from './user-dashboard/new-quiz/new-quiz.component';
 import { UserHomeComponent } from './user-dashboard/user-home/user-home.component';
 import { UserHeaderComponent } from './user-dashboard/user-header/user-header.component';
 import { UCategoriesComponent } from './user-dashboard/u-categories/u-categories.component';
+import { SecurityComponent } from './security/security.component';
+import { SecurityService } from './security/security.service';
 
 @NgModule({
   declarations: [
@@ -30,15 +33,17 @@ import { UCategoriesComponent } from './user-dashboard/u-categories/u-categories
     UserDashboardComponent,
     UserHomeComponent,
     UserHeaderComponent,
-    UCategoriesComponent
+    UCategoriesComponent,
+    SecurityComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    routing
+    routing,
+    CookieModule.forRoot()
   ],
-  providers: [],
+  providers: [SecurityService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
