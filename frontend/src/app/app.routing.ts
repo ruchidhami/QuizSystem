@@ -22,7 +22,7 @@ const appRoutes: Routes = [
     component: LoginComponent
   },
   {
-    path: 'app',
+    path: 'admin',
     component: DashboardComponent,
     children: [
       {

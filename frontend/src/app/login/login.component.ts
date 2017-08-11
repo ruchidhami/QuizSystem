@@ -51,7 +51,7 @@ export class LoginComponent implements OnInit {
     this.userService.login(this.user)
       .subscribe((loginUser) => {
         if (loginUser.username === 'admin' && loginUser.email === 'admin@admin.com' && loginUser.role === 'superAdmin') {
-          this.router.navigate([`/app/home`]);
+          this.router.navigate([`/admin/home`]);
         }
         else if (!loginUser.username) {
           this.router.navigate([`/signup`]);

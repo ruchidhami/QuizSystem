@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Http, Response, Headers } from '@angular/http';
+import { Headers, Http, Response } from '@angular/http';
 import { Observable } from 'rxjs';
 
 import { Question } from './question/question';
@@ -11,6 +11,7 @@ import { User } from '../login/user';
 export class DashboardService {
   constructor(private http: Http, private activatedRoute: ActivatedRoute) {
   }
+
   private headers = new Headers({ 'Content-Type': 'application/json', 'Accept': 'application/json' });
 
   createCategory(categoryObj): Observable<Category> {
@@ -45,13 +46,13 @@ export class DashboardService {
   retrieveCategory(categoryId): Observable<Category> {
     return this.http.get('http://localhost:3000/category/' + categoryId)
       .map(response => {
-          const categoryObj = response.json();
-          let category = new Category();
-          category.categoryName = categoryObj.categoryName;
-          category.id = categoryObj._id;
+        const categoryObj = response.json();
+        let category = new Category();
+        category.categoryName = categoryObj.categoryName;
+        category.id = categoryObj._id;
 
-          return category;
-        })
+        return category;
+      })
       .catch(this.handleError);
   }
 

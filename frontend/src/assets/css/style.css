@@ -2248,7 +2248,7 @@ label {
 .step{
   height: 60px;
   overflow: visible;
-  transition: height 0.8s ease;
+  transition: height 0.5s ease;
 }
 
 .cursor a{

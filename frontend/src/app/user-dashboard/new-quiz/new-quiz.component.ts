@@ -31,7 +31,15 @@ export class NewQuizComponent implements OnInit {
   retrieveQuestion() {
     this.dashboardService.retrieveQuestion(this.categoryId)
       .subscribe((question) => {
-        this.questions = question;
+        let shuffleQuestions: Question[] = [];
+        let arr = [];
+        while (shuffleQuestions.length < question.length) {
+          const randomNumber = Math.ceil(Math.random() * question.length) - 1;
+          if (arr.indexOf(randomNumber) > -1) continue;
+          arr.push(randomNumber);
+          shuffleQuestions.push(question[randomNumber])
+        }
+        this.questions = shuffleQuestions;
       })
   }
 
@@ -58,10 +66,10 @@ export class NewQuizComponent implements OnInit {
   }
 
   getCorrectAnswerColor(question) {
-    if(question.answerShown) {
-      return "green";
+    if (question.answerShown) {
+      return 'green';
     } else {
-      return "";
+      return '';
     }
   }
 }
