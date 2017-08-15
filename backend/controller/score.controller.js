@@ -22,7 +22,18 @@ function fetchScore(req, res, next) {
     })
 }
 
+function listScore(req, res, next) {
+  scoreService.listScore()
+    .then(fetchedScore => {
+      res.send(fetchedScore)
+    })
+    .catch(err => {
+      next(err)
+    })
+}
+
 module.exports = {
   createScore,
-  fetchScore
+  fetchScore,
+  listScore
 };

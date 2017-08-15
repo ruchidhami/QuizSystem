@@ -27,7 +27,20 @@ function fetchScore(userId, categoryId) {
   })
 }
 
+function listScore() {
+  return new Promise((resolve, reject) => {
+    scoreModel.find()
+      .then(fetchedScore => {
+        resolve(fetchedScore)
+      })
+      .catch(err => {
+        reject(err)
+      })
+  })
+}
+
 module.exports = {
   createScore,
-  fetchScore
+  fetchScore,
+  listScore
 };

@@ -6,7 +6,7 @@ export class User {
   role: string;
 
   constructor(props: any) {
-    this.id = props.id;
+    this.id = props._id;
     this.username = props.username;
     this.email = props.email;
     this.role = props.role;

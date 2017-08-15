@@ -1,5 +1,8 @@
 <form class="form-horizontal style-form mtbox" #createForm="ngForm" (ngSubmit)="createCategory()">
   <h3 style= "margin: 0 0 17px 140px">{{category.categoryName}}</h3>
+  <h4>previous score : {{score}}</h4>
+  <h4>current score : {{scoreCount}}</h4>
+  <button type="button" (click)="createScore(scoreCount)">save current score</button>
   <ul>
     <li *ngFor="let question of questions | paginate: { itemsPerPage: 5, currentPage: p } ; let i = index;" class="strong">
       {{question.question}}

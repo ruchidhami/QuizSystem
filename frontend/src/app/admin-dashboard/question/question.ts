@@ -11,6 +11,7 @@ export class Question {
   correctAnswerChoosen: boolean = false;
   displayAnswer: boolean = false;
   answerShown : boolean = false;
+  wrongAsnwerChoosen: boolean = false;
 
 
   constructor(props: any) {

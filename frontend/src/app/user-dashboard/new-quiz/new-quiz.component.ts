@@ -2,32 +2,42 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import 'rxjs/add/operator/switchMap';
 
+import { CookieService } from 'ngx-cookie';
+
 import { DashboardService } from '../../admin-dashboard/dashboard.service';
+import { ScoreService } from '../score.service';
 
 import { Category } from '../../admin-dashboard/categories/category';
 import { Question } from '../../admin-dashboard/question/question';
+import { Score } from '../score';
 
 @Component({
   selector: 'app-new-quiz',
   templateUrl: './new-quiz.component.html',
   styleUrls: ['./new-quiz.component.css'],
-  providers: [DashboardService]
+  providers: [DashboardService, ScoreService, CookieService]
 })
 export class NewQuizComponent implements OnInit {
   questions: Question[];
   category = new Category();
+  scoreObj = new Score({});
+  score: Score;
 
   public p: number = 1;
 
   constructor(private activatedRoute: ActivatedRoute,
+              private scoreService: ScoreService,
+              private cookieService: CookieService,
               private dashboardService: DashboardService) {
   }
 
   public categoryId = this.activatedRoute.snapshot.paramMap.get('id');
+  public userId = this.cookieService.get("userId");
 
   ngOnInit() {
     this.retrieveCategory();
-    this.retrieveQuestion()
+    this.retrieveQuestion();
+    //this.fetchScore();
   }
 
   retrieveQuestion() {
@@ -51,14 +61,18 @@ export class NewQuizComponent implements OnInit {
         this.category = category;
       })
   }
-  counter = 0;
+
+  scoreCount = 0;
 
   validateAnswer(choosedOption, ans, question) {
     if (!question.correctAnswerChoosen && !question.answerShown)
       if (ans === question.correctAnswer) {
+        if (!question.wrongAsnwerChoosen && !question.answerShown)
+          this.scoreCount += 10;
         question.correctAnswerChoosen = true;
         choosedOption.style.color = 'green';
       } else {
+        question.wrongAsnwerChoosen = true;
         choosedOption.style.color = 'red';
       }
   }
@@ -76,6 +90,17 @@ export class NewQuizComponent implements OnInit {
     }
   }
 
+  createScore(value) {
+    this.scoreService.createScore({userId: this.userId, categoryId: this.categoryId, value: value})
+      .subscribe((score) => {
+        this.scoreObj = score;
+      })
+  }
 
-
+  fetchScore() {
+    this.scoreService.fetchScore(this.userId, this.categoryId)
+      .subscribe((score) => {
+        this.score = score;
+      })
+  }
 }

@@ -34,6 +34,7 @@ export class LoginComponent implements OnInit {
       .subscribe((loginUser) => {
         if (loginUser.username === 'admin' && loginUser.email === 'admin@admin.com' && loginUser.role === 'superAdmin') {
           this.cookieService.put("authToken", loginUser.role);
+          this.cookieService.put("adminId", loginUser.id);
           this.router.navigate([`/admin/home`]);
         }
         else if (!loginUser.username) {
@@ -41,6 +42,7 @@ export class LoginComponent implements OnInit {
         }
         else {
           this.cookieService.put("authToken", "user");
+          this.cookieService.put("userId", loginUser.id);
           this.router.navigate([`/user/home`]);
         }
       })
