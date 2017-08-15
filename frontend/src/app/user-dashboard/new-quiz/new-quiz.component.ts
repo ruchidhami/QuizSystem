@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import 'rxjs/add/operator/switchMap';
 
 import { DashboardService } from '../../admin-dashboard/dashboard.service';
 
-import { Category } from '../../admin-dashboard/categories/category'
-import { Question } from '../../admin-dashboard/question/question'
+import { Category } from '../../admin-dashboard/categories/category';
+import { Question } from '../../admin-dashboard/question/question';
 
 @Component({
   selector: 'app-new-quiz',
@@ -16,6 +16,8 @@ import { Question } from '../../admin-dashboard/question/question'
 export class NewQuizComponent implements OnInit {
   questions: Question[];
   category = new Category();
+
+  public p: number = 1;
 
   constructor(private activatedRoute: ActivatedRoute,
               private dashboardService: DashboardService) {
@@ -49,6 +51,7 @@ export class NewQuizComponent implements OnInit {
         this.category = category;
       })
   }
+  counter = 0;
 
   validateAnswer(choosedOption, ans, question) {
     if (!question.correctAnswerChoosen && !question.answerShown)
@@ -73,5 +76,6 @@ export class NewQuizComponent implements OnInit {
     }
   }
 
-  p: number = 1;
+
+
 }

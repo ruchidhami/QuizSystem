@@ -10,8 +10,8 @@ export class SecurityService implements CanActivate {
   }
 
   canActivate() {
-    const token = this.cookieService.get("authToken");
-    if(token) {
+    const token = this.cookieService.get('authToken');
+    if (token) {
       return true
     }
     this.router.navigate(['/login']);
