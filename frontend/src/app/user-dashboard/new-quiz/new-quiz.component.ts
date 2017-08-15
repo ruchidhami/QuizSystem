@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import 'rxjs/add/operator/switchMap';
 
 import { DashboardService } from '../../admin-dashboard/dashboard.service';
 
-import { Category } from '../../admin-dashboard/categories/category'
-import { Question } from '../../admin-dashboard/question/question'
+import { Category } from '../../admin-dashboard/categories/category';
+import { Question } from '../../admin-dashboard/question/question';
 
 @Component({
   selector: 'app-new-quiz',
@@ -72,7 +72,4 @@ export class NewQuizComponent implements OnInit {
       return '';
     }
   }
-
-  p: number = 1;
-  collection: any[] = ["sdfa", "sasf"];
 }
