@@ -4,20 +4,21 @@ const questionModel = require('../models/question.model');
 
 function createQuestion(quesParam) {
   return new Promise((resolve, reject) => {
-      let question = new questionModel(quesParam);
-      question.save()
-        .then(questionCreated => {
-          resolve(questionCreated);
-        })
-        .catch(err => {
-          reject(err)
-        })
+    let question = new questionModel(quesParam);
+    question.save()
+      .then(questionCreated => {
+        resolve(questionCreated);
+      })
+      .catch(err => {
+        reject(err)
+      })
   })
 }
 
 function listQuestion() {
   return new Promise((resolve, reject) => {
-    questionModel.find()
+    var query = questionModel.find({});
+    query.skip(0).limit(5).exec()
       .then(listedQuestion => {
         resolve(listedQuestion)
       })
@@ -32,7 +33,7 @@ function fetchQuestion(categoryId) {
     questionModel.find({categoryId: categoryId})
       .then(fetchedQuestion => {
         resolve(fetchedQuestion)
-    })
+      })
       .catch(err => {
         reject(err)
       })
@@ -51,7 +52,7 @@ function deleteQuestion(id) {
   })
 }
 
-module.exports ={
+module.exports = {
   createQuestion,
   listQuestion,
   fetchQuestion,

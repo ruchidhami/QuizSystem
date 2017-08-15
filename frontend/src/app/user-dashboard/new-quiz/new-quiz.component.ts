@@ -72,4 +72,7 @@ export class NewQuizComponent implements OnInit {
       return '';
     }
   }
+
+  p: number = 1;
+  collection: any[] = ["sdfa", "sasf"];
 }

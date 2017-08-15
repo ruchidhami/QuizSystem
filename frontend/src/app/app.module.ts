@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { routing } from './app.routing';
 import { CookieModule } from 'ngx-cookie';
+import { Ng2PaginationModule } from 'ng2-pagination';
 
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './admin-dashboard/dashboard.component';
@@ -41,6 +42,7 @@ import { SecurityService } from './security/security.service';
     FormsModule,
     HttpModule,
     routing,
+    Ng2PaginationModule,
     CookieModule.forRoot()
   ],
   providers: [SecurityService],
