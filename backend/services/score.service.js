@@ -4,9 +4,20 @@ const scoreModel = require('../models/score.model');
 
 function updateScore(params) {
   return new Promise((resolve, reject) => {
-    scoreModel.findOneAndUpdate(params)
-      .then(scoreCreated => {
-        resolve(scoreCreated)
+    scoreModel.findOne({userId: params.userId, categoryId: params.categoryId})
+      .then(score => {
+        if (score) {
+          scoreModel.findByIdAndUpdate(score._id, {$set: {value: params.value}}, function (err, scoreUpdate) {
+            resolve(scoreUpdate)
+          })
+        }
+        else {
+          let score = new scoreModel(params);
+          score.save()
+            .then(scoreCreated => {
+              resolve(scoreCreated)
+            })
+        }
       })
       .catch(err => {
         reject(err)
@@ -16,7 +27,7 @@ function updateScore(params) {
 
 function fetchScore(userId, categoryId) {
   return new Promise((resolve, reject) => {
-    scoreModel.findOne({userId: userId , categoryId: categoryId})
+    scoreModel.findOne({userId: userId, categoryId: categoryId})
       .then(fetchedScore => {
         resolve(fetchedScore || {})
       })
