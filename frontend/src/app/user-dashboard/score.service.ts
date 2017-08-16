@@ -12,8 +12,8 @@ export class ScoreService {
   private headers = new Headers({ 'Content-Type': 'application/json', 'Accept': 'application/json' });
 
 
-  createScore(scoreObj): Observable<Score> {
-    return this.http.post('http://localhost:3000/scores', scoreObj)
+  updateScore(scoreObj): Observable<Score> {
+    return this.http.put('http://localhost:3000/scores', scoreObj)
       .map(response => {
         const scoreObj = response.json();
         let score = new Score(scoreObj);
@@ -26,10 +26,10 @@ export class ScoreService {
   fetchScore(userId, categoryId): Observable<Score> {
     return this.http.get('http://localhost:3000/users/' + userId + '/categories/' + categoryId + '/scores')
       .map(response => {
-        const scoreObj = response.json();
-        let score = new Score(scoreObj);
+          const scoreObj = response.json();
+          let score = new Score(scoreObj);
 
-        return score;
+          return score;
       })
       .catch(this.handleError);
   }

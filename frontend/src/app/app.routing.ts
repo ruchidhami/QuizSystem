@@ -7,6 +7,8 @@ import { LoginComponent }      from './login/login.component';
 import { QuestionComponent }      from './admin-dashboard/question/question.component';
 import { CategoriesComponent }      from './admin-dashboard/categories/categories.component';
 import { HomePageComponent }      from './admin-dashboard/home-page/home-page.component';
+import { DeleteQCComponent }      from './admin-dashboard/delete-qc/delete-qc.component';
+import { ListQuestionsComponent }      from './admin-dashboard/list-questions/list-questions.component';
 import { NewQuizComponent }      from './user-dashboard/new-quiz/new-quiz.component';
 import { UserHomeComponent }      from './user-dashboard/user-home/user-home.component';
 import { UCategoriesComponent }      from './user-dashboard/u-categories/u-categories.component';
@@ -39,6 +41,14 @@ const appRoutes: Routes = [
       {
         path: 'questions',
         component: QuestionComponent
+      },
+      {
+        path: 'delete',
+        component: DeleteQCComponent
+      },
+      {
+        path: 'listQuestions/:id',
+        component: ListQuestionsComponent
       }
     ]
   },

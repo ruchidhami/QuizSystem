@@ -41,7 +41,7 @@ function retrieveCategory(id) {
 
 function deleteCategory(id) {
   return new Promise((resolve, reject) => {
-    categoryModel.findOneAndRemove(id)
+    categoryModel.findByIdAndRemove(id)
       .then(categoryDeleted => {
         resolve(categoryDeleted)
       })

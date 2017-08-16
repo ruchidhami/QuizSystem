@@ -1,0 +1,6 @@
+<h3>Delete Categories</h3>
+<ul class="list-categories">
+  <li *ngFor="let category of categories">
+    <button type="button" (click)="goToCategory(category.id)">{{category.categoryName}}</button>  <a (click)="deleteCategory(category.id)">X</a>
+  </li>
+</ul>

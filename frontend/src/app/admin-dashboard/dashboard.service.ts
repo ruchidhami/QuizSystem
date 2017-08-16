@@ -56,6 +56,13 @@ export class DashboardService {
       .catch(this.handleError);
   }
 
+  deleteCategory(categoryId) {
+    return this.http.delete('http://localhost:3000/category/' + categoryId)
+      .map(response => {
+        console.log(response)
+      })
+  }
+
   createQuestion(quesObj): Observable<Question> {
     return this.http.post('http://localhost:3000/questions', quesObj)
       .map(response => {
@@ -90,6 +97,13 @@ export class DashboardService {
         return question;
       })
       .catch(this.handleError);
+  }
+
+  deleteQuestion(questionId) {
+    return this.http.delete('http://localhost:3000/questions/' + questionId)
+      .map(response => {
+        return response;
+      })
   }
 
   listUsers(): Observable<User[]> {

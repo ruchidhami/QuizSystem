@@ -10,6 +10,7 @@ import { ScoreService } from '../score.service';
 import { Category } from '../../admin-dashboard/categories/category';
 import { Question } from '../../admin-dashboard/question/question';
 import { Score } from '../score';
+import { isUndefined } from 'util';
 
 @Component({
   selector: 'app-new-quiz',
@@ -32,12 +33,12 @@ export class NewQuizComponent implements OnInit {
   }
 
   public categoryId = this.activatedRoute.snapshot.paramMap.get('id');
-  public userId = this.cookieService.get("userId");
+  public userId = this.cookieService.get('userId');
 
   ngOnInit() {
     this.retrieveCategory();
     this.retrieveQuestion();
-    //this.fetchScore();
+    this.fetchScore();
   }
 
   retrieveQuestion() {
@@ -90,17 +91,18 @@ export class NewQuizComponent implements OnInit {
     }
   }
 
-  createScore(value) {
-    this.scoreService.createScore({userId: this.userId, categoryId: this.categoryId, value: value})
+  updateScore(value) {
+    this.scoreService.updateScore({ userId: this.userId, categoryId: this.categoryId, value: value })
       .subscribe((score) => {
         this.scoreObj = score;
+        window.location.reload();
       })
   }
 
   fetchScore() {
     this.scoreService.fetchScore(this.userId, this.categoryId)
       .subscribe((score) => {
-        this.score = score;
+          this.score = score;
       })
   }
 }

@@ -18,7 +18,7 @@ function createQuestion(quesParam) {
 function listQuestion() {
   return new Promise((resolve, reject) => {
     var query = questionModel.find({});
-    query.skip(0).limit(5).exec()
+    query.skip(0).limit(0).exec()
       .then(listedQuestion => {
         resolve(listedQuestion)
       })
@@ -42,7 +42,7 @@ function fetchQuestion(categoryId) {
 
 function deleteQuestion(id) {
   return new Promise((resolve, reject) => {
-    questionModel.findOneAndRemove(id)
+    questionModel.findByIdAndRemove(id)
       .then(questionDeleted => {
         resolve(questionDeleted)
       })

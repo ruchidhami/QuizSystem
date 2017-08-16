@@ -2,8 +2,8 @@
 
 const scoreService = require('../services/score.service');
 
-function createScore(req, res, next) {
-  scoreService.createScore(req.body)
+function updateScore(req, res, next) {
+  scoreService.updateScore(req.body)
     .then(scoreCreated => {
       res.send(scoreCreated)
     })
@@ -33,7 +33,7 @@ function listScore(req, res, next) {
 }
 
 module.exports = {
-  createScore,
+  updateScore,
   fetchScore,
   listScore
 };

@@ -1,10 +1,10 @@
-<form class="form-horizontal style-form mtbox" #createForm="ngForm" (ngSubmit)="createCategory()">
+<form class="form-horizontal style-form mtbox" #createForm="ngForm" (ngSubmit)="createCategory()" *ngIf="category && score && questions">
   <h3 style= "margin: 0 0 17px 140px">{{category.categoryName}}</h3>
-  <h4>previous score : {{score}}</h4>
-  <h4>current score : {{scoreCount}}</h4>
-  <button type="button" (click)="createScore(scoreCount)">save current score</button>
+  <h4>Previous Score : {{score.value}}</h4>
+  <h4>Current Score : {{scoreCount}}</h4>
+  <button type="button" (click)="updateScore(scoreCount)">Save Current Score</button>
   <ul>
-    <li *ngFor="let question of questions | paginate: { itemsPerPage: 5, currentPage: p } ; let i = index;" class="strong">
+    <li *ngFor="let question of questions | paginate: { itemsPerPage: 10, currentPage: p } ; let i = index;" class="strong">
       {{question.question}}
       <ul [class.cursor] = "question.displayAnswer">
         <li *ngFor="let ans of question.answers; let i = index;" >

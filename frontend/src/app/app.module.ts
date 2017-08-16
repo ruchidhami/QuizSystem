@@ -20,6 +20,8 @@ import { UserHeaderComponent } from './user-dashboard/user-header/user-header.co
 import { UCategoriesComponent } from './user-dashboard/u-categories/u-categories.component';
 import { SecurityComponent } from './security/security.component';
 import { SecurityService } from './security/security.service';
+import { DeleteQCComponent } from './admin-dashboard/delete-qc/delete-qc.component';
+import { ListQuestionsComponent } from './admin-dashboard/list-questions/list-questions.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,9 @@ import { SecurityService } from './security/security.service';
     UserHomeComponent,
     UserHeaderComponent,
     UCategoriesComponent,
-    SecurityComponent
+    SecurityComponent,
+    DeleteQCComponent,
+    ListQuestionsComponent
   ],
   imports: [
     BrowserModule,
