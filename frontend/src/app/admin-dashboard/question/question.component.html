@@ -1,7 +1,7 @@
 <form class="form-horizontal style-form mtbox" #createForm="ngForm" (ngSubmit)="createQuestion()">
   <h3 style= "margin: 0 0 50px 0px" >Select Category and add questions</h3>
   <div class="form-group">
-    <label class="col-sm-1 col-sm-2 control-label">Categories</label>
+    <label class="col-sm-3 control-label">Categories</label>
     <div class="col-sm-6">
       <select class="form-control" name="id" [(ngModel)]="quest.categoryId" #id="ngModel">
         <option *ngFor="let category of categories" [value]=[category.id] selected>{{category.categoryName}}</option>
@@ -9,37 +9,39 @@
     </div>
   </div>
   <div class="form-group">
-    <label class="col-sm-1 col-sm-2 control-label">Question</label>
+    <label class="col-sm-3 control-label">Question</label>
     <div class="col-sm-6">
       <input type="text" class="form-control" name="question" [(ngModel)]="quest.question" #question="ngModel">
     </div>
   </div>
   <div class="form-group" style="padding-bottom: 0">
-    <label class="col-sm-1 col-sm-2"> &nbsp;</label>
+    <label class="col-sm-3"> &nbsp;</label>
     <div class="col-sm-6">
       *Please Seperate the options by pipe '|' ('shift' + '\') for eg: option1 | option2 | option3
     </div>
   </div>
 
   <div class="form-group">
-    <label class="col-sm-1 col-sm-2 control-label">In-Correct Options</label>
+    <label class="col-sm-3 control-label">In-Correct Options</label>
     <div class="col-sm-6">
       <input type="text" class="form-control" name="incorrectAnswer" [(ngModel)]="quest.incorrectAnswer" #incorrectAnswer="ngModel">
     </div>
   </div>
   <div class="form-group">
-    <label class="col-sm-1 col-sm-2 control-label">Correct Option</label>
+    <label class=" col-sm-3 control-label">Correct Option</label>
     <div class="col-sm-6">
       <input type="text" class="form-control" name="correctAnswer" [(ngModel)]="quest.correctAnswer" #correctAnswer="ngModel">
     </div>
   </div>
   <div class="form-group">
-    <label class="col-sm-1 col-sm-2 control-label">Correct Answer Description</label>
+    <label class=" col-sm-3 control-label">Correct Answer Description</label>
     <div class="col-sm-6">
       <input type="text" class="form-control" name="description" [(ngModel)]="quest.description" #description="ngModel">
     </div>
   </div>
-  <div class="btn-center">
-    <button type="submit" class="btn btn-theme" (click)="refresh()">Submit</button>
+  <div class="form-group">
+    <div class="col-sm-offset-3 col-sm-6 text-center">
+      <button type="submit" class="btn btn-theme" (click)="refresh()">Submit</button>
+    </div>
   </div>
 </form>

@@ -1748,7 +1748,7 @@ label {
 }
 
 .form-horizontal.style-form .form-group {
-	border-bottom: 1px solid #eff2f7;
+	/*border-bottom: 1px solid #eff2f7;*/
 	padding-bottom: 15px;
 	margin-bottom: 15px;
 }
@@ -2307,15 +2307,12 @@ ul.list-categories li button {
 ul.question-list {
   padding: 0px;
   margin: 25px 0;
-  background: #fff;
-  padding: 40px;
-  border:0;
-  box-shadow: 0 2px 1px rgba(0, 0, 0, 0.2);
+  
 }
 
 ul.question-list > li {
   margin-bottom: 20px;
-  border-bottom:1px solid #ddd;
+  /*border-bottom:1px solid #ddd;*/
 }
 
 ul.question-list > li:last-child {;
@@ -2407,6 +2404,10 @@ form.form-horizontal h3 {
 form.form-horizontal {
   max-width: 800px;
   margin: 40px auto;
+  background: #fff;
+  padding: 40px;
+  border:0;
+  box-shadow: 0 2px 1px rgba(0, 0, 0, 0.2);
 }
 
 .answer {
