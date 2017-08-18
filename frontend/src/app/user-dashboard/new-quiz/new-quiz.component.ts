@@ -71,10 +71,13 @@ export class NewQuizComponent implements OnInit {
         if (!question.wrongAsnwerChoosen && !question.answerShown)
           this.scoreCount += 10;
         question.correctAnswerChoosen = true;
-        choosedOption.style.color = 'green';
+        choosedOption.style.backgroundColor = 'rgba(11, 255, 22, 0.18)';
+        choosedOption.style.border = '1px solid rgba(11, 255, 22, 0.18)';
+        choosedOption.style.fontWeight = 'bold';
       } else {
         question.wrongAsnwerChoosen = true;
-        choosedOption.style.color = 'red';
+        choosedOption.style.backgroundColor = 'rgba(230, 41, 41, 0.06)';
+        choosedOption.style.border = '1px solid rgba(230, 41, 41, 0.06)';
       }
   }
 
@@ -85,7 +88,7 @@ export class NewQuizComponent implements OnInit {
 
   getCorrectAnswerColor(question) {
     if (question.answerShown) {
-      return 'green';
+      return 'rgba(11, 255, 22, 0.18)';
     } else {
       return '';
     }

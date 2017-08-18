@@ -13,14 +13,15 @@
       <div class="question">{{i+1}}. {{question.question}}</div>
       <ul [class.cursor] = "question.displayAnswer">
         <li *ngFor="let ans of question.answers; let i = index;" >
-          <a *ngIf="ans === question.correctAnswer" (click)="validateAnswer($event.target, ans, question)" href="javascript:void(0)" [style.color]="getCorrectAnswerColor(question)">{{i+1}} : {{ans}}</a>
+          <a *ngIf="ans === question.correctAnswer" (click)="validateAnswer($event.target, ans, question)" href="javascript:void(0)" [style.background]="getCorrectAnswerColor(question)">{{i+1}} : {{ans}}</a>
           <a *ngIf="ans !== question.correctAnswer" (click)="validateAnswer($event.target, ans, question)" href="javascript:void(0)">{{i+1}} : {{ans}}</a>
         </li>
       </ul>
       <div class="answer">
-        <button class="logout" type="button" (click)="showAnswer(question)"><span class="hide ">Hide Answer</span><span class="show">Show Answer</span></button>
+        <button class="logout" type="button" (click)="showAnswer(question)">Answer</button>
         <div [class.display]="!question.displayAnswer" class="step">
-          <p>Answer: {{question.correctAnswer}} <br> Description: {{question.description}}</p>
+          <span class="answer"><strong>{{question.correctAnswer}}</strong></span> <br>
+          <span class="desp">Description: {{question.description}}</span>
         </div>
       </div>
     </li>

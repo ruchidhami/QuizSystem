@@ -5,6 +5,7 @@ import { HttpModule } from '@angular/http';
 import { routing } from './app.routing';
 import { CookieModule } from 'ngx-cookie';
 import { Ng2PaginationModule } from 'ng2-pagination';
+import { ModalModule } from 'ngx-bootstrap';
 
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './admin-dashboard/dashboard.component';
@@ -47,7 +48,8 @@ import { ListQuestionsComponent } from './admin-dashboard/list-questions/list-qu
     HttpModule,
     routing,
     Ng2PaginationModule,
-    CookieModule.forRoot()
+    CookieModule.forRoot(),
+    ModalModule.forRoot()
   ],
   providers: [SecurityService],
   bootstrap: [AppComponent]

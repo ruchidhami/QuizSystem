@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute , Router} from '@angular/router';
+import { BsModalService } from 'ngx-bootstrap/modal';
+import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
 
 import { DashboardService } from '../dashboard.service';
 import { Category } from '../categories/category';
@@ -14,13 +16,18 @@ import { Question } from '../question/question';
 export class DeleteQCComponent implements OnInit {
   categories: Category[];
   questions: Question[];
+  public modalRef: BsModalRef;
 
-  constructor(private dashboardService: DashboardService, private activatedRoute: ActivatedRoute, private router: Router) { }
+  constructor(private dashboardService: DashboardService, private activatedRoute: ActivatedRoute, private router: Router , private modalService: BsModalService) { }
 
   public categoryId = this.activatedRoute.snapshot.paramMap.get('id');
 
   ngOnInit() {
     this.listCategories();
+  }
+
+  public openModal(template) {
+    this.modalRef = this.modalService.show(template);
   }
 
   listCategories(){

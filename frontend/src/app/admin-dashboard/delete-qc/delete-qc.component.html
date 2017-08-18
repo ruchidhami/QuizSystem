@@ -4,11 +4,23 @@
     <ul class="list-categories">
       <li *ngFor="let category of categories">
         <button type="button" (click)="goToCategory(category.id)">{{category.categoryName}}</button>
-        <a (click)="deleteCategory(category.id)"><i class="glyphicon glyphicon-trash"></i></a>
+        <a  (click)="openModal(template)"><i class="glyphicon glyphicon-remove"></i></a>
       </li>
     </ul>
   </form>
 </div>
+
+<template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Modal</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    This is a modal.
+  </div>
+</template>
 
 
 
