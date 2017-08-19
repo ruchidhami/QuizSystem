@@ -39,34 +39,13 @@
                  #email="ngModel">
         </div>
         <div class="group">
-          <input type="submit" class="button" value="Sign Up" (click)="refresh()">
+          <input type="submit" class="button" value="Sign Up">
         </div>
       </form>
     </div>
   </div>
 </div>
 
-
-<!-- Use a button to open the snackbar -->
-<button onclick="myFunction()">Show Snackbar</button>
-
-<!-- The actual snackbar -->
-<div id="snackbar">Some text some message..</div>
-
-
-<script>
-  function myFunction() {
-    // Get the snackbar DIV
-    var x = document.getElementById("snackbar")
-
-    // Add the "show" class to DIV
-    x.className = "show";
-
-    // After 3 seconds, remove the show class from DIV
-    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
-  }
-</script>
-
-
-
-
+<div class="snackbar" *ngIf="user.showSnackbar">
+  <p>User registered successfully!</p>
+</div>

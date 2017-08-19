@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import 'rxjs/add/operator/switchMap';
+import {Observable} from 'rxjs/Rx';
 
 import { CookieService } from 'ngx-cookie';
 
@@ -24,6 +25,8 @@ export class NewQuizComponent implements OnInit {
   scoreObj = new Score({});
   score: Score;
 
+  usersCount: number;
+
   public p: number = 1;
 
   constructor(private activatedRoute: ActivatedRoute,
@@ -39,6 +42,32 @@ export class NewQuizComponent implements OnInit {
     this.retrieveCategory();
     this.retrieveQuestion();
     this.fetchScore();
+    this.retrieveCategoryUser();
+    let timer = Observable.timer(2000,1000);
+    timer.subscribe(t => this.tickerFunc(t));
+  }
+
+    public days : number;
+    public hours : number; 
+    public minutes: number;
+    public seconds: number;
+
+  tickerFunc(t){
+
+     this.days = Math.floor(t / 86400);
+     t -= this.days * 86400;
+     this.hours = Math.floor(t / 3600) % 24;
+     t -= this.hours * 3600;
+     this.minutes = Math.floor(t / 60) % 60;
+     t -= this.minutes * 60;
+     this.seconds = t % 60;
+
+     return [
+             this.days + 'd',
+             this.hours + 'h',
+             this.minutes + 'm',
+             this.seconds + 's'
+            ].join(' ');
   }
 
   retrieveQuestion() {
@@ -69,14 +98,14 @@ export class NewQuizComponent implements OnInit {
     if (!question.correctAnswerChoosen && !question.answerShown)
       if (ans === question.correctAnswer) {
         if (!question.wrongAsnwerChoosen && !question.answerShown)
-          this.scoreCount += 10;
+          this.scoreCount += 1;
         question.correctAnswerChoosen = true;
         choosedOption.style.backgroundColor = 'rgba(11, 255, 22, 0.18)';
         choosedOption.style.border = '1px solid rgba(11, 255, 22, 0.18)';
         choosedOption.style.fontWeight = 'bold';
       } else {
         question.wrongAsnwerChoosen = true;
-        choosedOption.style.backgroundColor = 'rgba(230, 41, 41, 0.06)';
+        choosedOption.style.backgroundColor = 'rgb(242, 222, 222)';
         choosedOption.style.border = '1px solid rgba(230, 41, 41, 0.06)';
       }
   }
@@ -106,6 +135,13 @@ export class NewQuizComponent implements OnInit {
     this.scoreService.fetchScore(this.userId, this.categoryId)
       .subscribe((score) => {
           this.score = score;
+      })
+  }
+
+  retrieveCategoryUser() {
+    this.scoreService.fetchCategoryUsers(this.categoryId)
+      .subscribe((scores) => {
+        this.usersCount = scores.length;
       })
   }
 }

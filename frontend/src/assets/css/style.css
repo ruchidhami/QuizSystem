@@ -402,6 +402,8 @@ ul.sidebar-menu li a.active i {
 
 /* MAIN CONTENT CONFIGURATION */
 #main-content {
+    position: relative;
+    height: 100vh;
     margin-left: 210px;
 }
 
@@ -2248,16 +2250,6 @@ label {
   padding: 0 0 10px 135px;
 }
 
-.display{
-  height: 0 !important;
-  overflow: hidden !important;
-}
-.step{
-  height: 60px;
-  overflow: visible;
-  transition: height 0.5s ease;
-}
-
 .cursor a{
   cursor: default !important;
 }
@@ -2276,23 +2268,21 @@ label {
 
 ul.list-categories {
   padding: 0;
-  /* max-width: 500px; */
   margin: 0 auto;
 }
 ul.list-categories li {
   list-style: none;
-  /*border-bottom: 1px solid #ddd;*/
-  padding: 10px 0px 15px;
-  width: 200px;
+  width: 240px;
   display: inline-block;
+  padding: 10px 15px 15px;
+  position: relative;
 }
 
 ul.list-categories li:last-child {
   border:0;
 }
 ul.list-categories li a {
-  float: right;
-  background: rgba(249, 67, 100, 0.21);
+  background: rgba(249, 67, 100, 0.42);
   height: 30px;
   width: 30px;
   text-align: center;
@@ -2301,17 +2291,17 @@ ul.list-categories li a {
   border-radius: 50%;
   cursor: pointer;
   margin: 10px 0;
-  left: -40px;
-  position: relative;
-  top: -22px;
+  position: absolute;
+  right: 11px;
+  top: -11px;
 }
 ul.list-categories li button {
-  background: rgba(242, 242, 242, 0.21);
+  background: rgb(217, 217, 248);
   padding: 10px;
   font-size: 20px;
   border-radius: 5px;
   text-align: left;
-  width: calc(100% - 50px);
+  width: 200px;
   border: 0;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
   text-align: center;
@@ -2353,6 +2343,8 @@ ul.question-list ul {
   border-radius: 5px;
   color: #333;
   /* max-width: 400px; */
+  font-size: 16px;
+  line-height: 20px;
 }
 ul.question-list ul li {
   display: inline-block;
@@ -2369,9 +2361,9 @@ ul.question-list ul li a:hover {
 ul.question-list ul li a {
   color: #424a5d;
   background: rgb(255, 255, 255);
-  padding: 10px;
-  border: 1px solid #f2f2f2;
-  border-radius: 6px;
+  padding: 10px 20px;
+  border: 1px solid #c6baba;
+  border-radius: 50px;
   transition: .5s ease all;
   cursor: pointer;
   display: block;
@@ -2390,14 +2382,33 @@ ul.ng2-pagination {
   margin: 5px 0px 0;
   text-align: left !important;
   margin-bottom: 22px;
+  background: rgba(127, 144, 145, 0.16);
+  padding: 16px 20px;
+  font-size: 16px;
+  line-height: 20px;
+  overflow: visible;
+  transition: all 0.5s ease;
 
 }
+
 .step p {
   padding: 10px;
   background: rgba(242, 242, 242, 0.3);
   border-radius: 5px;
   opacity: 1;
   transition: 1s ease opacity;
+}
+
+.answer-text{
+    text-transform:capitalize;
+    display: block;
+    margin: 0 0 10px;
+}
+
+.display{
+  height: 0;
+  padding: 0;
+  overflow: hidden !important;
 }
 
 .step.display p {
@@ -2410,7 +2421,8 @@ button.logout {
   -webkit-border-radius: 2px;
   border: 1px solid #f2f2f2 !important;
   padding: 5px 15px;
-  background: #f2f2f2;
+  background: rgb(242, 242, 242,1);
+  border-radius: 5px;
   /* margin-top: 15px; */
   /* font-weight: bold; */
   /*background: rgba(230, 41, 41, 0.06);*/
@@ -2468,52 +2480,34 @@ ul.inline-list {
   /* text-align: right; */
 }
 
-
-
-
-/* The snackbar - position it at the bottom and in the middle of the screen */
-#snackbar {
-  visibility: hidden; /* Hidden by default. Visible on click */
-  min-width: 250px; /* Set a default minimum width */
-  margin-left: -125px; /* Divide value of min-width by 2 */
-  background-color: #333; /* Black background color */
-  color: #fff; /* White text color */
-  text-align: center; /* Centered text */
-  border-radius: 2px; /* Rounded borders */
-  padding: 16px; /* Padding */
-  position: fixed; /* Sit on top of the screen */
-  z-index: 1; /* Add a z-index if needed */
-  left: 50%; /* Center the snackbar */
-  bottom: 30px; /* 30px from the bottom */
+.category-wrapper{
+  margin: 30px 73px;
 }
 
-/* Show the snackbar when clicking on a button (class added with JavaScript) */
-#snackbar.show {
-  visibility: visible; /* Show the snackbar */
-
-  /* Add animation: Take 0.5 seconds to fade in and out the snackbar.
-  However, delay the fade out process for 2.5 seconds */
-  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
-  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+.category-wrapper h2 {
+  color: #000;
+  text-align: center;
 }
 
-/* Animations to fade the snackbar in and out */
-@-webkit-keyframes fadein {
-  from {bottom: 0; opacity: 0;}
-  to {bottom: 30px; opacity: 1;}
+.time span{
+    font-size: 20px;
+    text-transform: lowercase;
 }
 
-@keyframes fadein {
-  from {bottom: 0; opacity: 0;}
-  to {bottom: 30px; opacity: 1;}
-}
+.snackbar{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: rgba(0,0,0,0.8);
+    color: white;
+    padding: 10px 28px 0px;
+    font-size: 14px;
+    line-height: 18px;
+    text-align: center;
+    text-transform: capitalize;
+    right: 0;
+    width: 260px;
+    margin: 0 auto;
+    transition: 0.5s all linear;
 
-@-webkit-keyframes fadeout {
-  from {bottom: 30px; opacity: 1;}
-  to {bottom: 0; opacity: 0;}
-}
-
-@keyframes fadeout {
-  from {bottom: 30px; opacity: 1;}
-  to {bottom: 0; opacity: 0;}
 }

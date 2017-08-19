@@ -32,11 +32,9 @@ export class QuestionComponent implements OnInit {
     this.dashboardService.createQuestion(this.quest)
       .subscribe((question) => {
         this.quest = question;
+        this.quest.showSnackbar = true;
+        window.location.reload();
       })
-  }
-
-  refresh():void {
-    window.location.reload();
   }
 
 }

@@ -1,5 +1,7 @@
 <form class="form-horizontal style-form mtbox" #createForm="ngForm" (ngSubmit)="createCategory()" *ngIf="category && score && questions">
-  <h3 style= "margin: 0 0 30px 0px">{{category.categoryName}}</h3>
+  <h3 style= "margin: 0 0 10px 0px; text-align: left;">{{category.categoryName}}</h3>
+  <h4 style="margin: 0 0 30px; display: block;">({{usersCount}} users played)</h4>
+  <h3 style= "font-size: 25px;" class="time">Time: {{minutes}}<span>m</span> :{{seconds}}<span>s</span></h3>
   <ul class="inline-list">
     <li>
       <h4>Previous Score : {{score.value}}</h4>
@@ -20,7 +22,7 @@
       <div class="answer">
         <button class="logout" type="button" (click)="showAnswer(question)">Answer</button>
         <div [class.display]="!question.displayAnswer" class="step">
-          <span class="answer"><strong>{{question.correctAnswer}}</strong></span> <br>
+          <span class="answer-text"><strong>Answer: {{question.correctAnswer}}</strong></span>
           <span class="desp">Description: {{question.description}}</span>
         </div>
       </div>

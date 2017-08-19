@@ -34,6 +34,21 @@ export class ScoreService {
       .catch(this.handleError);
   }
 
+  fetchCategoryUsers(categoryId) {
+    return this.http.get('http://localhost:3000/categories/' + categoryId + '/scores')
+      .map(response => {
+          let scores: Score[] = [];
+          response.json().forEach((scoreObj) => {
+          let score = new Score(scoreObj);
+
+          scores.push(score)
+        });
+
+          return scores;
+      })
+      .catch(this.handleError);
+  }
+
   private handleError(error: Response | any): Observable<any> {
     return Observable.throw(error.json());
   }

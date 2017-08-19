@@ -21,11 +21,9 @@ export class CategoriesComponent implements OnInit {
     this.dashboardService.createCategory(this.category)
       .subscribe((category) => {
         this.category = category;
+        this.category.showSnackbar = true;
+        window.location.reload();
       })
-  }
-
-  refresh(): void {
-    window.location.reload();
   }
 
 }

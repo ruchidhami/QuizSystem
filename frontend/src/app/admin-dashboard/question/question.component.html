@@ -41,7 +41,11 @@
   </div>
   <div class="form-group">
     <div class="col-sm-offset-3 col-sm-6 text-center">
-      <button type="submit" class="btn btn-theme" (click)="refresh()">Submit</button>
+      <button type="submit" class="btn btn-theme">Submit</button>
     </div>
   </div>
 </form>
+
+<div class="snackbar" *ngIf="quest.showSnackbar">
+  <p>Question created successfully!</p>
+</div>

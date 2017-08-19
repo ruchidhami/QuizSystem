@@ -22,6 +22,16 @@ function fetchScore(req, res, next) {
     })
 }
 
+function fetchCategoryUser(req, res, next) {
+  scoreService.fetchCategoryUser(req.params.categoryId)
+    .then(fetchedCategoryUser => {
+      res.send(fetchedCategoryUser)
+    })
+    .catch(err => {
+      next(err)
+    })
+}
+
 function listScore(req, res, next) {
   scoreService.listScore()
     .then(fetchedScore => {
@@ -35,5 +45,6 @@ function listScore(req, res, next) {
 module.exports = {
   updateScore,
   fetchScore,
-  listScore
+  listScore,
+  fetchCategoryUser
 };
