@@ -4,13 +4,13 @@
     <ul class="list-categories">
       <li *ngFor="let category of categories">
         <button type="button" (click)="goToCategory(category.id)">{{category.categoryName}}</button>
-        <a  (click)="openModal(template)"><i class="glyphicon glyphicon-remove"></i></a>
+        <a (click)="deleteCategory(category.id)"><i class="glyphicon glyphicon-remove"></i></a>
       </li>
     </ul>
   </form>
 </div>
 
-<template #template>
+<!-- <template #template>
   <div class="modal-header">
     <h4 class="modal-title pull-left">Are you sure? {{category.categoryName}}</h4>
     <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
@@ -20,8 +20,8 @@
   <div class="modal-body">
    <h3>Delete this Category :</h3>
     <ul class="buttons">
-      <li><button type="button" class="btn">No</button></li>
+      <li><button type="button" class="btn" (click)="bsModalRef.hide()">No</button></li>
       <li><button type="button" class="btn" (click)="deleteCategory(category.id)">Yes</button></li>
     </ul>
   </div>
-</template>
+</template> -->
