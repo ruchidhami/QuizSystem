@@ -33,10 +33,21 @@
           <input id="pass2" type="password" class="input" name="password" data-type="password" [(ngModel)]="user.password"
                  #password="ngModel">
         </div>
+
+
+
         <div class="group">
           <label for="email" class="label">Email Address</label>
-          <input id="email" type="text" class="input" name="email" [(ngModel)]="user.email"
-                 #email="ngModel">
+          <input id="email" type="text" class="input" name="email" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" [(ngModel)]="user.email"
+                 #email="ngModel" required>
+          <div *ngIf="email.errors && (email.dirty || email.touched || createForm.submitted )" class="alert alert-danger">
+            <div [hidden]="!email.errors.required">
+              Error
+            </div>
+            <div class="md-char-counter" *ngIf="email.errors && email.errors.pattern">
+              Email is invalid
+            </div>
+          </div>
         </div>
         <div class="group">
           <input type="submit" class="button" value="Sign Up">
