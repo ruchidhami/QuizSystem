@@ -3,7 +3,6 @@
 const scoreModel = require('../models/score.model');
 
 function updateScore(params) {
-  console.log(params,"gggggg")
   return new Promise((resolve, reject) => {
     scoreModel.findOne({userId: params.userId, categoryId: params.categoryId})
       .then(score => {
