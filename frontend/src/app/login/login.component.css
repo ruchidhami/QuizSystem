@@ -12,24 +12,27 @@ a{color:inherit;text-decoration:none}
 .login-wrap {
   width: 100%;
   margin: auto;
-  max-width: 525px;
-  min-height: 670px;
+  min-height: 100vh;
   position: relative;
-  background: url('../../assets/img/bg.jpg') no-repeat center;
-  box-shadow: 0 12px 15px 0 rgba(0, 0, 0, .24), 0 17px 50px 0 rgba(0, 0, 0, .19);
+  background: url('../../assets/img/q-bg.jpg') repeat center;
+  /*background-size: cover !important;*/
 }
 
 .login-html {
   width: 100%;
-  height: 100%;
+  max-width: 480px;
+  min-height: 450px;
   position: absolute;
+  left: 50%;
+  top:50%;
+  transform: translate(-50% , -50%);
   padding: 90px 70px 50px 70px;
   background: rgba(40, 57, 101, .9);
 }
 
 .login-html .sign-in-htm,
 .login-html .sign-up-htm {
-  top: 0;
+  top: 20px;
   left: 0;
   right: 0;
   bottom: 0;
@@ -59,7 +62,9 @@ a{color:inherit;text-decoration:none}
   margin-right: 15px;
   padding-bottom: 5px;
   margin: 0 15px 10px 0;
+  color: #d5d5d5;
   display: inline-block;
+  cursor: pointer;
   border-bottom: 2px solid transparent;
 }
 

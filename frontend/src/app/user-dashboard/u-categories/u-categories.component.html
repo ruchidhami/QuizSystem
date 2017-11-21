@@ -1,6 +1,8 @@
-<h2>Categories</h2>
-<ul class="list-categories">
-  <li *ngFor="let category of categories">
-    <button type="button" (click)="goToCategory(category.id)">{{category.categoryName}}</button>
-  </li>
-</ul>
+<div class="category-wrapper">
+  <h2>Categories</h2>
+  <ul class="list-categories">
+    <li *ngFor="let category of categories">
+      <button type="button" (click)="goToCategory(category.id)">{{category.categoryName}}</button>
+    </li>
+  </ul>
+</div>

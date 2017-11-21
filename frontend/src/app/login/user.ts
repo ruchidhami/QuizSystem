@@ -5,6 +5,9 @@ export class User {
   email: string;
   role: string;
 
+  //derived class
+  showSnackbar: boolean = false;
+
   constructor(props: any) {
     this.id = props._id;
     this.username = props.username;

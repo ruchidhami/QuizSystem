@@ -12,7 +12,7 @@ export class Question {
   displayAnswer: boolean = false;
   answerShown : boolean = false;
   wrongAsnwerChoosen: boolean = false;
-
+  showSnackbar: boolean = false;
 
   constructor(props: any) {
     this.id = props._id;

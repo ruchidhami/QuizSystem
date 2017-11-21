@@ -1,6 +1,11 @@
-<h3>Delete Questions</h3>
-<ul class="list-categories">
-  <li *ngFor="let question of questions">
-    <button type="button">{{question.question}}</button> <a (click)="deleteQuestion(question.id)">X</a>
-  </li>
-</ul>
+<div class="row mtbox">
+  <form class ="form-horizontal style-form">
+    <h3 style="margin: 0 0 30px 0">Questions Lists</h3>
+    <table class="table table-bordered">
+      <tr *ngFor="let question of questions" >
+        <td>{{question.question}}</td>
+        <td style="width: 50px; text-align: center; cursor: pointer;"> <a (click)="deleteQuestion(question.id)"><i class="glyphicon glyphicon-trash"></i> </a></td>
+      </tr>
+    </table>
+  </form>
+</div>

@@ -26,6 +26,8 @@ export class LoginComponent implements OnInit {
     this.userService.createUser(this.user)
       .subscribe((user) => {
         this.user = user;
+         this.user.showSnackbar = true;
+         window.location.reload();
       });
   }
 
@@ -46,9 +48,5 @@ export class LoginComponent implements OnInit {
           this.router.navigate([`/user/home`]);
         }
       })
-  }
-
-  refresh(): void {
-    window.location.reload();
   }
 }

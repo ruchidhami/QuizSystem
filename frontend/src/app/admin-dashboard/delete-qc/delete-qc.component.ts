@@ -14,8 +14,8 @@ import { Question } from '../question/question';
 export class DeleteQCComponent implements OnInit {
   categories: Category[];
   questions: Question[];
-
-  constructor(private dashboardService: DashboardService, private activatedRoute: ActivatedRoute, private router: Router) { }
+  constructor(private dashboardService: DashboardService, private activatedRoute: ActivatedRoute, 
+    private router: Router) { }
 
   public categoryId = this.activatedRoute.snapshot.paramMap.get('id');
 
