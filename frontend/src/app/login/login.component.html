@@ -36,7 +36,7 @@
         <div class="group">
           <label for="email" class="label">Email Address</label>
           <input id="email" type="text" class="input" name="email" [(ngModel)]="user.email"
-                 #email="ngModel">
+                 #email="ngModel" pattern="/^\S+@\S+\.\S+$/">
         </div>
         <div class="group">
           <input type="submit" class="button" value="Sign Up" (click)="refresh()">
