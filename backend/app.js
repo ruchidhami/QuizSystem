@@ -9,11 +9,11 @@ var cors = require('cors');
 //var json = require('json-validation');
 // var LocalStrategy = require('passport-local').Strategy;
 
-var mongo = require('mongodb');
 var mongoose = require('mongoose');
+const uri = 'mongodb://admin:admin@ds115866.mlab.com:15866/quiz-system';
 
-mongoose.connect('mongodb://localhost/quizDatabase');
-var db = mongoose.connection;
+var db = mongoose.connect(uri);
+
 
 // Init App
 var app = express();
