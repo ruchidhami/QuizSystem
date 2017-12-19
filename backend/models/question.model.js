@@ -23,6 +23,9 @@ var QuestionSchema = new Schema({
   },
   categoryId: {
     type: Schema.Types.ObjectId, ref: "Categories"
+  },
+  catId: {
+    type: String
   }
 });
 
